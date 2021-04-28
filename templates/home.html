@@ -1,0 +1,33 @@
+<!-- home.html -->
+<!doctype html>
+
+<html>
+<body>
+  <h1>Stock Prices Prediction for {{ company_name }} based on time-series forecasting</h1>
+  <table border = 1>
+  {% for each_data in data["data"] %}
+  {% for key, value in each_data.items() %}
+  <tr>   
+    <th>{{key}}</th>
+    <td>{{value}}</td>
+  </tr>
+  {% endfor %}
+  {% endfor %}
+  </table>
+  <h2> Fetch latest predictions after choosing Company Name</h2>
+  <p>Once you choose a company name and click on submit, an API call is sent to fetch the stock prices of the company using a custom made API wrapper. The response is received via a webhook and another API call is sent to perform time-series forecasting on the data.</p>
+
+  <form action="/button" method="POST">
+    <label for="Company">Choose a Company:</label>
+    <select name="Company" id="Company">
+      <option value="IBM">IBM</option>
+      <option value="NTNX">NTNX</option>
+      <option value="AAPL">AAPL</option>
+      <option value="MSFT">MSFT</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>  
+</form>
+</body>
+</html>
